@@ -10,5 +10,6 @@ class Autor():
         self.cpf = cpf
         self.nome = nome
 
-    def toJSON(self):
+    def toJson(self):
+
         return {"cpf" :self.cpf, "nome" : self.nome}
