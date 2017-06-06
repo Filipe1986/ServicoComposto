@@ -59,9 +59,9 @@ class PublicacaoDAO(DAO):
     def insert(self, titulo):
         con = self.get_connection
         cur = con.cursor()
+        print("""INSERT INTO publicacao(titulo) VALUES (%s);""",titulo)
+        cur.execute("""INSERT INTO publicacao(titulo) VALUES (%s);""", (titulo,))
         con.commit()
-        print('INSERT INTO publicacao(titulo) VALUES(\'' + titulo + ' \' )')
-        cur.execute('INSERT INTO publicacao(titulo) VALUES(\'' + titulo + '\');')
         cur.close()
         con.close()
 
