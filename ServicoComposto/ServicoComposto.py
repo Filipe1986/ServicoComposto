@@ -11,7 +11,7 @@ def metodo():
     vetor = []
     for autor in autores.get():
         aut = Autor(autor[0],autor[1])
-        vetor.append(aut)
+        vetor.append(aut.toJSON())
     print(vetor)
     return jsonify({"autores" : vetor})
 
