@@ -10,7 +10,7 @@ class DAO(ABC):
         return con
 
     @abstractmethod
-    def insert(self):
+    def insert(self, args):
         pass
 
     @abstractmethod
@@ -18,11 +18,11 @@ class DAO(ABC):
         pass
 
     @abstractmethod
-    def update(self):
+    def update(self, args):
         pass
 
     @abstractmethod
-    def delete(self):
+    def delete(self, args):
         pass
 
 
@@ -61,7 +61,7 @@ class PublicacaoDAO(DAO):
         cur = con.cursor()
         con.commit()
         print('INSERT INTO publicacao(titulo) VALUES(\'' + titulo + ' \' )')
-        cur.execute('INSERT INTO public.publicacao(titulo) VALUES(\'' + titulo + '\');')
+        cur.execute('INSERT INTO publicacao(titulo) VALUES(\'' + titulo + '\');')
         cur.close()
         con.close()
 
