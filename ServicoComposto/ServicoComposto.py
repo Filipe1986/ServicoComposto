@@ -1,11 +1,14 @@
 from flask import Flask, jsonify, abort, make_response, request
+from flask_cors import CORS, cross_origin
+
+
 
 from Modelo.Autor import Autor
 from Dao.Dao import AuthorDAO, PublicacaoDAO
 from Modelo.Publicacao import Publicacao
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/', methods=['GET'])
 def get_author():
@@ -15,7 +18,7 @@ def get_author():
         aut = Autor(autor[0], autor[1])
         vetor.append(aut.toJson())
     print(vetor)
-    return jsonify({"autores": vetor})
+    return jsonify({"data": vetor})
 
 
 @app.route('/publicacoes', methods=['GET'])
@@ -26,7 +29,9 @@ def get_publicacao():
         pub = Publicacao(publicacao[1])
         vetor.append(pub.toJson())
     print(vetor)
-    return jsonify({"publicacoes": vetor})
+    response = jsonify({"publicacoes": vetor})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 @app.route('/AddPub', methods=['POST'])
 def set_publicacao():
