@@ -28,6 +28,15 @@ def add_autor():
     autores.insert((request.json['cpf'],request.json['nome']))
     return ""
 
+@app.route('/autor', methods=['PUT'])
+def update_autor():
+    if (not request.json) or (not 'cpf') in request.json:
+        print(request)
+        abort(400)
+    autores = AutorDAO()
+    autores.update((request.json['cpf'],request.json['nome']))
+    return ""
+
 @app.route('/publicacoes', methods=['GET'])
 def get_publicacao():
     publicacoes = PublicacaoDAO()

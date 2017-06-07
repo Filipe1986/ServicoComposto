@@ -18,7 +18,12 @@ class AutorDAO(DAO):
         #autores = cur.fetchall()
 
     def update(self, args):
-        pass
+        con = self.get_connection
+        cur = con.cursor()
+        print('UPDATE autor SET nome = %s WHERE cpf = %s;', (args[1], args[0]))
+        cur.execute("""UPDATE autor SET nome = %s WHERE cpf = %s;""", (args[1], args[0]))
+        con.commit()
+        # autores = cur.fetchall()
 
     def delete(self, args):
         pass
