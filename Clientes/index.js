@@ -17,7 +17,7 @@ var app = new Vue({
         addAutor(){
             console.log("cpf: " + this.cpf);
             console.log("nome: " + this.nome);
-            this.$http.post("http://127.0.0.1:5000/autor/", {
+            this.$http.post("http://127.0.0.1:5000/autor", {
                 cpf : this.cpf,
                 nome : this.nome
             }).then((response) => {
