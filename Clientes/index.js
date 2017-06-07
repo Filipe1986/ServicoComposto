@@ -10,7 +10,7 @@ var app = new Vue({
     },
     methods: {
         getAutores(){
-            this.$http.get("http://127.0.0.1:5000/autor/").then((response) => {
+            this.$http.get("http://127.0.0.1:5000/autor").then((response) => {
                 console.log(response.data)
             });
         },
@@ -20,7 +20,9 @@ var app = new Vue({
             this.$http.post("http://127.0.0.1:5000/autor/", {
                 cpf : this.cpf,
                 nome : this.nome
-            }).then((response) => {});
+            }).then((response) => {
+                alert("Refresh the page to see inserted data")
+            });
         }
     }
 });
